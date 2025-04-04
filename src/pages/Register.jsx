@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+const BACKEND_URL = import.meta.env.BACKEND_URL;
 
 function Register() {
   const [name, setName] = useState("");
@@ -9,6 +10,9 @@ function Register() {
   const [role, setRole] = useState("student");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+
+
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -19,7 +23,7 @@ function Register() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
+      const res = await axios.post(`${BACKEND_URL}/auth/register`, {
         name,
         email,
         password,
@@ -30,7 +34,11 @@ function Register() {
         navigate("/login");
       }
     } catch (err) {
-      setError("Registration failed. Try again.");
+      if (err.response && err.response.status === 400) {
+        setError(err.response.data?.msg || "Bad Request");
+      } else {
+        setError("Registration failed. Try again.");
+      }
     }
   };
 
@@ -49,7 +57,9 @@ function Register() {
         <button type="submit">Register</button>
       </form>
       <p>
-        Already have an account? <a href="/login">Login</a>
+        Already have an account? <button onClick={() => navigate("/login")} style={{ marginTop: "10px" }}>
+        Login
+      </button>
       </p>
     </div>
   );

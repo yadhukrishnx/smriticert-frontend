@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import StudentDashboard from "./pages/student/StudentDashboard";
+import NotFound from "./pages/NotFound";
 import InstitutionDashboard from "./pages/institution/InstitutionDashboard";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route
@@ -21,6 +23,7 @@ function App() {
           path="/institution-dashboard"
           element={user?.role === "institution" ? <InstitutionDashboard /> : <Navigate to="/login" />}
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
