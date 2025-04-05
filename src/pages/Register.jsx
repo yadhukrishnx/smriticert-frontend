@@ -11,9 +11,6 @@ function Register() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-
-
-
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -43,24 +40,66 @@ function Register() {
   };
 
   return (
-    <div className="register-container">
-      <h2>Register</h2>
-      {error && <p className="error">{error}</p>}
-      <form onSubmit={handleRegister}>
-        <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} required />
-        <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
-        <select onChange={(e) => setRole(e.target.value)}>
-          <option value="student">Student</option>
-          <option value="institution">Institution</option>
-        </select>
-        <button type="submit">Register</button>
-      </form>
-      <p>
-        Already have an account? <button onClick={() => navigate("/login")} style={{ marginTop: "10px" }}>
-        Login
-      </button>
-      </p>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+
+
+      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white">Register</h2>
+          {/* Back Button */}
+          <button
+          type="button"
+          onClick={() => navigate('/')}
+          className="text-sm text-blue-600 hover:underline mb-2"
+        >
+          ← Back
+        </button>
+        {error && <p className="text-sm text-red-600 text-center">{error}</p>}
+        <form onSubmit={handleRegister} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Name"
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="w-full px-4 py-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full px-4 py-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="w-full px-4 py-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <select
+            onChange={(e) => setRole(e.target.value)}
+            className="w-full px-4 py-2 border rounded-md dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="student">Student</option>
+            <option value="institution">Institution</option>
+          </select>
+          <button
+            type="submit"
+            className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 transition duration-300"
+          >
+            Register
+          </button>
+        </form>
+        <p className="text-sm text-center text-gray-600 dark:text-gray-300">
+          Already have an account?{" "}
+          <a
+            onClick={() => navigate("/login")}
+            className="cursor-pointer text-blue-600 hover:underline focus:outline-none"
+          >
+            Login
+          </a>
+        </p>
+      </div>
     </div>
   );
 }
