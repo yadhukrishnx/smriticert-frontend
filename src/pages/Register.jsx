@@ -1,8 +1,19 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-violet-900 via-violet-800 to-sky-700 p-4">
+    
+    <div className="bg-white dark:bg-gray-950">
+        {/* Back Button */}
+    <button
+      onClick={() => navigate("/")}
+      className="absolute top-6 left-6 text-white bg-white/10 hover:bg-white/20 px-4 py-2 rounded transition z-auto"
+    >
+      ← Back
+    </button>
+    <div className="min-h-screen flex items-center justify-center pt-4 ">
       <div className="w-full max-w-4xl">
         <h1 className="text-4xl font-bold text-center text-white mb-8">
           Choose Registration Type
@@ -53,8 +64,11 @@ function Register() {
             Login
           </a>
         </p>
+        
       </div>
     </div>
+    </div>
+
   );
 }
 
