@@ -18,6 +18,8 @@ function App() {
        <Route path="/" element={<Landing />} />
        <Route path="/login" element={<Login />} />
        <Route path="/register" element={<Register />} />
+       {/* <Route path="/register/student" element={<StudentRegister />} />
+       <Route path="/register/institution/*" element={<InstitutionRegister />} /> */}
        <Route
          path="/student-dashboard"
          element={user?.role === "student" ? <StudentDashboard /> : <Navigate to="/login" />}
