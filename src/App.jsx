@@ -24,11 +24,11 @@ function App() {
        <Route path="/register/institution/*" element={<InstitutionRegister />} />
        <Route
          path="/student-dashboard"
-         element={user?.role === "student" ? <StudentDashboard /> : <Navigate to="/login" />}
+         element={<StudentDashboard/>}
        />
        <Route
          path="/institution-dashboard"
-         element={user?.role === "institution" ? <InstitutionDashboard /> : <Navigate to="/login" />}
+         element={<InstitutionDashboard />}
        />
        <Route path="*" element={<NotFound />} />
      </Routes>

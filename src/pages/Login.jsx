@@ -81,6 +81,24 @@ function Login() {
         >
           Register
         </button>
+          <h2 className="mt-10 text-white">Demo</h2>
+        <div className="flex gap-4">
+  <button
+    type="button"
+    onClick={() => navigate("/student-dashboard")}
+    className="flex-1 px-4 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded transition"
+  >
+    Student Dashboard
+  </button>
+  <button
+    type="button"
+    onClick={() => navigate("/institution-dashboard")}
+    className="flex-1 px-4 py-3 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded transition"
+  >
+    Institution Dashboard
+  </button>
+</div>
+
       </form>
     </div>
   </div>
